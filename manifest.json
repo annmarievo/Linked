@@ -1,10 +1,21 @@
 {
     "manifest_version": 3,
     "name": "Linked",
-    "description": "Base Level Extension",
+    "description": "Improving accessibility for the visually impaired",
     "version": "1.0",
+    "permissions": ["activeTab", "storage", "scripting"],
+    "host_permissions": ["<all_urls>"],
     "action": {
       "default_popup": "linked.html",
       "default_icon": "images/LinkedLogo.png"
-    }
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ]
   }
